@@ -338,7 +338,7 @@ process evaluate_candidates {
     label "wf_human_snp"
     cpus 1
     // [CW-5461] recent testing has shown the Q90 for this is <2GB. we have seen more trouble with this in cloud that may be impacted by reducing this - we can configure that independently if this causes issues.
-    memory { 4.GB * task.attempt }
+    memory { 8.GB * task.attempt }
     maxRetries 3
     errorStrategy = {task.exitStatus in [137,140] ? 'retry' : 'finish'}
 
