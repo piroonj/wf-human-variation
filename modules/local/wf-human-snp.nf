@@ -79,7 +79,7 @@ process pileup_variants {
     cpus 1
     memory { 4.GB * task.attempt }
     errorStrategy 'retry'
-    maxRetries 1
+    maxRetries 2
     input:
         each region
         tuple path(xam), path(xam_idx), val(xam_meta)
