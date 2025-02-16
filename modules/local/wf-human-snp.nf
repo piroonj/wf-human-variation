@@ -340,7 +340,7 @@ process evaluate_candidates {
     // [CW-5461] recent testing has shown the Q90 for this is <2GB. we have seen more trouble with this in cloud that may be impacted by reducing this - we can configure that independently if this causes issues.
     memory { 8.GB * task.attempt }
     maxRetries 3
-    errorStrategy = {task.exitStatus in [137,140] ? 'retry' : 'finish'}
+    errorStrategy = {task.exitStatus > 0 ? 'retry' : 'finish'}
 
     input:
         tuple val(contig), path(phased_xam), path(phased_xai), val(xam_meta), path(phased_vcf)
