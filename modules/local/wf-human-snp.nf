@@ -380,7 +380,7 @@ process aggregate_full_align_variants {
     // Sort and merge all "full alignment" variants
     label "wf_human_snp"
     cpus 2
-    memory { aggregate_memory[task.attempt - 1] }
+    memory '32GB' //{ aggregate_memory[task.attempt - 1] }
     maxRetries 2
     errorStrategy = {task.exitStatus in [137,140] ? 'retry' : 'finish'}
 
